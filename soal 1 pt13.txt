@@ -1,0 +1,16 @@
+DELIMITER $$
+
+CREATE FUNCTION getProductPrice(pCode INT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+    DECLARE productPrice DECIMAL(10,2);
+
+    SELECT price INTO productPrice
+    FROM products
+    WHERE productCode = pCode;
+
+    RETURN productPrice;
+END $$
+
+DELIMITER ;
