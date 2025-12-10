@@ -1,0 +1,16 @@
+DELIMITER $$
+
+CREATE FUNCTION supplierCountByCountry(countryName VARCHAR(50))
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE supplierTotal INT;
+
+    SELECT COUNT(*) INTO supplierTotal
+    FROM suppliers
+    WHERE country = countryName;
+
+    RETURN supplierTotal;
+END $$
+
+DELIMITER ;
